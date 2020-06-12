@@ -16,7 +16,6 @@ RUN sudo pip3 install progressbar2
 RUN sudo pip3 install setuptools==41.0.0
 RUN sudo apt-get update -y 
 
-
 # OpenCV3 インストール
 RUN apt update && \
          apt install -y --no-install-recommends \
@@ -77,5 +76,6 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
 WORKDIR /user/local/
+
 
 RUN apt-get -y update && apt-get -y upgrade
