@@ -59,6 +59,7 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
 RUN sudo pip3 install tensorflow-gpu==1.15
 RUN sudo pip3 install cvbase
 
+
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
