@@ -13,39 +13,39 @@ Dockerを使って，sshできるサーバーをローカルに立てて，そ�
 
 クローンしたら，
 
-'''
+ ```
 cd ./gui-docker
-'''
+ ```
 
 でディレクトリを移動してください．次に
 
-'''
+ ```
 sudo docker image build . -t gui-docker
-'''
+ ```
 
 でイメージを作成し，
 
-'''
+ ```
 sudo docker run --gpus all  -v $(pwd):/user/local -d -p {$PORT}:22 gui-docker
-'''
+ ```
 
 で，コンテナの実行をしてください.{$PORT}は適当な空いてるポートを入れてください．
 
 次に，別の端末からsshコマンドでサーバーにアクセスしてください．
 
-'''
+ ```
 ssh -X root@localhost -p {$PORT}
-'''
+ ```
 
 このとき，パスワードは*screencast*です．(必要であれば適宜Dockerfileをいじって変更してください．)
 
 ログインすることができたら，
 
-'''
+ ```
 cd /user/local
 
 python3 test.py
-'''
+ ```
 
 を実行してみてください．簡単なグラフが出てこれば成功です．お疲れ様でした．
 ## 参考サイト
