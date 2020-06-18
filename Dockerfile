@@ -63,6 +63,9 @@ RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
+RUN useradd -m -s /bin/bash yaegasi && gpasswd -a yaegasi sudo
+RUN echo 'yaegasi:screencast' | chpasswd
+
 # SSH login fix. Otherwise user is kicked off after login
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
@@ -77,5 +80,11 @@ CMD ["/usr/sbin/sshd", "-D"]
 
 WORKDIR /user/local/
 
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+RUN sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+RUN sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+RUN apt-get install apt-transport-https
+RUN apt-get update
+RUN apt-get install -y code
 
 RUN apt-get -y update && apt-get -y upgrade
