@@ -90,9 +90,11 @@ sudo docker rm gui-docker
 .......
 ```
 みたいなエラーが出た場合
+
 [SSH接続エラー回避方法：.ssh/known_hostsから特定のホストを削除する/削除しないで対処する3つの方法](https://qiita.com/grgrjnjn/items/8ca33b64ea0406e12938)
-[https://qiita.com/wnoguchi/items/690f3f4651f8f11e4ed3]
-(https://qiita.com/wnoguchi/items/690f3f4651f8f11e4ed3)
+
+[SSH接続で WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! って言われて接続を拒否られるとき](https://qiita.com/wnoguchi/items/690f3f4651f8f11e4ed3)
+
 この辺を参照してみてください．
 エラーが出る理由も書かれています．
 ## 参考サイト
