@@ -48,7 +48,17 @@ python3 test.py
  ```
 
 を実行してみてください．簡単なグラフが出てこれば成功です．お疲れ様でした．
-
+## vscodeについて
+vscodeの仕様でrootでの起動ができないようになっています．vscodeを起動したい場合は別ユーザーでコンテナの中に入る必要があるようです．
+```
+ssh -X yaegasi@localhost -p {$PORT}
+```
+でログインし，入ることができたら
+```
+code
+```
+でvscodeが起動できるはずです．
+ユーザー名を変更したい場合はDockerfileをいじってください．
 ## 使い終わったら
 コンテナを停止もしくは削除しないと使用したポートが使われたままになります．
 #### 停止
@@ -71,7 +81,20 @@ sudo docker rm [コンテナのID]
 ```
 sudo docker rm gui-docker
 ```
-
+#### エラー
+コンテナを消したはずなのに新しいコンテナを立ち上げ，sshしようとした時に
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.......
+```
+みたいなエラーが出た場合
+[SSH接続エラー回避方法：.ssh/known_hostsから特定のホストを削除する/削除しないで対処する3つの方法](https://qiita.com/grgrjnjn/items/8ca33b64ea0406e12938)
+[https://qiita.com/wnoguchi/items/690f3f4651f8f11e4ed3]
+(https://qiita.com/wnoguchi/items/690f3f4651f8f11e4ed3)
+この辺を参照してみてください．
+エラーが出る理由も書かれています．
 ## 参考サイト
 [Docker 初心者 — ssh で接続できるサーバーを立てる](https://qiita.com/YumaInaura/items/adb20c8083fce2da86e1)
 
